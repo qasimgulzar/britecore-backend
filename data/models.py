@@ -30,8 +30,8 @@ class Fields(models.Model):
 
 class FieldValues(models.Model):
     entity_id = models.IntegerField(blank=False, null=False)
-    field = models.ForeignKey(Fields, to_field='id')
-    insurres = models.ForeignKey(Insurers, to_field='id')
+    field = models.ForeignKey(Fields, to_field='id',blank=False, null=False)
+    insurres = models.ForeignKey(Insurers, to_field='id',blank=False, null=False)
     dtype = models.CharField(max_length=50, blank=False, null=False)
     value = models.TextField()
     class Meta:
