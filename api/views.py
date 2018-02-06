@@ -46,7 +46,11 @@ class FieldValueViewSet(viewsets.ViewSet):
         return Response(request.data)
 
     def list(self,request):
-        insurer = Insurers.objects.all()
+        risk=request.GET.get('risk',None)
+        if risk==None:
+            insurer = Insurers.objects.all()
+        else:
+            insurer = Insurers.objects.filter(id=risk)
         entities={}
         for ins in insurer:
             fields=FieldValues.objects.filter(insurres=ins)
